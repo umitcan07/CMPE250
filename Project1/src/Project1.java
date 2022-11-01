@@ -5,12 +5,19 @@ import java.util.NoSuchElementException;
 public class Project1 {
     public static void main(String[] args) throws FileNotFoundException {
 
-        System.setOut(new PrintStream(new File("output_test1.txt")));
+        PrintStream fileOut = null;
+        try {
+            fileOut = new PrintStream(args[1]);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        System.setOut(fileOut);
+
         FactoryImpl myF = new FactoryImpl();
         BufferedReader reader;
 
         try {
-            reader = new BufferedReader(new FileReader("./test/inputs/input.txt"));
+            reader = new BufferedReader(new FileReader(args[0]));
             String line = reader.readLine();
             while (line != null) {
                 String[] ls = line.split(" ");
