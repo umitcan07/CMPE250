@@ -6,7 +6,7 @@
  - Linked List Implementation 
  - Factory Implementation
  
- ## Project2 - 
+ ## Project2 
  - Binary Node Implementation
  - Binary Search Tree Implementation
  - AVL Tree Implementation
