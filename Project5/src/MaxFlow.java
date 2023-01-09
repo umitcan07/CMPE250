@@ -1,18 +1,19 @@
-import java.lang.*;
 import java.util.LinkedList;
-import java.util.Queue;
 
 
 class MaxFlow {
-    static final int V = 6; // Number of vertices in graph
+    MaxFlow(int V) {
+        this.V = V;
+    }
+    int V; // Number of vertices in graph
 
     /* Returns true if there is a path from source 's' to
     sink 't' in residual graph. Also fills parent[] to
     store the path */
     boolean bfs(int[][] rGraph, int s, int t, int[] parent)
     {
-        // Create a visited array and mark all vertices as not visited
-
+        // Create a visited array and mark all vertices as
+        // not visited
         boolean[] visited = new boolean[V];
         for (int i = 0; i < V; ++i)
             visited[i] = false;
@@ -78,7 +79,7 @@ class MaxFlow {
         // Augment the flow while there is path from source
         // to sink
         while (bfs(rGraph, s, t, parent)) {
-            // Find minimum residual capacity of the edges
+            // Find minimum residual capacity of the edhes
             // along the path filled by BFS. Or we can say
             // find the maximum flow through the path found.
             int path_flow = Integer.MAX_VALUE;
@@ -103,30 +104,5 @@ class MaxFlow {
         return max_flow;
     }
 
-    // Driver program to test above functions
-    public static void main(String[] args)
-            throws java.lang.Exception
-    {
-        // Let us create a graph shown in the above example
-        int[][] graph = new int[][] {
 
-                { 0, 50, 40, 60, 29, 2, 20, 0, 0, 0, 0, 0}, // X
-                { 0, 0, 0, 0, 0, 0, 0,   25, 0, 0, 0, 0}, // r0
-                { 0, 0, 0, 0, 0, 0, 0,   20, 30, 0, 0, 0}, // r1
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0}, // r2
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 9, 0, 0}, // r3
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 7, 0}, // r4
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 18, 37}, // r5
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 30, 0, 19}, // c0
-                { 0, 0, 0, 0, 0, 0, 0,   10, 0, 0, 0, 0}, // c1
-                { 0, 0, 0, 0, 0, 0, 0,   19, 0, 0, 0, 33}, // c2
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 15}, // c3
-                { 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0}, // KL
-
-
-        };
-        MaxFlow m = new MaxFlow();
-
-        System.out.println("The maximum possible flow is "+ m.fordFulkerson(graph, 0, 5));
-    }
 }
